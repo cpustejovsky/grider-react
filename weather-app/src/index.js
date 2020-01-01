@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./components/SeasonDisplay";
+import Loading from "./components/Loading";
 
 export default class App extends Component {
   //Good place for one-time setup
@@ -24,8 +25,8 @@ export default class App extends Component {
   componentDidUpdate() {}
   //Good place to do clean up, especially for non-React stuff
   componentWillUnmount() {}
-  //Avoid doing anything besides returning JSX
-  render() {
+
+  renderContent() {
     if (this.state.errorMsg && !this.state.latitude) {
       return (
         <div className="ui container">
@@ -38,15 +39,12 @@ export default class App extends Component {
     if (!this.state.errorMsg && this.state.latitude) {
       return <SeasonDisplay latitude={this.state.latitude} />;
     }
-    if (!this.state.errorMsg && !this.state.latitude) {
-      return (
-        <div className="ui container">
-          <div className="ui message">
-            <div className="header">Season App</div>
-          </div>
-        </div>
-      );
-    }
+    return <Loading message={"Please accept location request"} />;
+  }
+
+  //Avoid doing anything besides returning JSX
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
