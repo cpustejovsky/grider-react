@@ -18,8 +18,7 @@ export default class App extends Component {
     return (
       <div className="ui container top-margin">
         <SearchBar onSubmit={this.onSearchSubmit}></SearchBar>
-        Found: {this.state.images.length} images
-        <ImageList></ImageList>
+        <ImageList images={this.state.images}></ImageList>
       </div>
     )
   }
