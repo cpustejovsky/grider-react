@@ -7,7 +7,8 @@ import YouTubeAPI from "./api/youtube";
 
 export default class App extends Component {
   state = {
-    videos: []
+    videos: [],
+    selectedVideo: null
   };
 
   onTermSubmit = async term => {
@@ -20,17 +21,27 @@ export default class App extends Component {
     console.log(this.state.videos);
   };
 
+  onVideoSelect = async video => {
+    this.setState({ selectedVideo: video });
+  };
+
   render() {
     return (
       <div className="ui container">
-          <SearchBar onTermSubmit={this.onTermSubmit} />
+        <SearchBar onTermSubmit={this.onTermSubmit} />
 
         <div className="ui grid">
           <div className="eight wide column">
-            <VideoDetails videos={this.state.videos} />
+            <VideoDetails
+              selectedVideo={this.state.selectedVideo}
+              videos={this.state.videos}
+            />
           </div>
           <div className="eight wide column">
-            <VideoList videos={this.state.videos} />
+            <VideoList
+              onVideoSelect={this.onVideoSelect}
+              videos={this.state.videos}
+            />
           </div>
         </div>
       </div>
