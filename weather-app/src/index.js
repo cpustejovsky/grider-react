@@ -12,7 +12,10 @@ export default class App extends Component {
 
   //Good place to do data-loading
   componentDidMount() {
-    const success = pos => this.setState({ latitude: pos.coords.latitude });
+    const success = pos => {
+      console.log(pos);
+      this.setState({ latitude: pos.coords.latitude });
+    };
     const error = err => this.setState({ errorMsg: err.message });
     const options = {
       enableHighAccuracy: true,
@@ -39,7 +42,7 @@ export default class App extends Component {
     if (!this.state.errorMsg && this.state.latitude) {
       return <SeasonDisplay latitude={this.state.latitude} />;
     }
-    return <Loading message={"Please accept location request"} />;
+    return <Loading message={"Please accept location request."} />;
   }
 
   //Avoid doing anything besides returning JSX
