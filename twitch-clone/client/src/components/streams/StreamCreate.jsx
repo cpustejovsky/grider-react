@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createStream } from "../../actions";
 class StreamCreate extends Component {
   renderError({ touched, error }) {
-    if (touched) {
+    if (touched && error) {
       return (
         <div className="ui error message">
           <div className="header">{error}</div>
