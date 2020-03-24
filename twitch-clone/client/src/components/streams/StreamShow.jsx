@@ -3,7 +3,7 @@ import React from 'react'
 export default function StreamShow() {
     return (
         <div>
-            StreamShow
+            <h1>STREAM SHOW</h1>
         </div>
     )
 }
