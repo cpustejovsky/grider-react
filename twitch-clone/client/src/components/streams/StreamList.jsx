@@ -40,11 +40,14 @@ class StreamList extends Component {
       return (
         <div className="item" key={stream.id}>
           {this.renderAdmin(stream)}
-          <i className="large middle aligned icon camera"></i>
-          <div className="content">
-            {stream.title}
-            <div className="description">{stream.description}</div>
-          </div>
+          <Link to={`/streams/${stream.id}`}>
+            {" "}
+            <i className="large middle aligned icon camera"></i>
+            <div className="content">
+              {stream.title}
+              <div className="description">{stream.description}</div>
+            </div>
+          </Link>
         </div>
       );
     });
